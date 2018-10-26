@@ -1,0 +1,64 @@
+ext {
+    // Application config
+    application = [
+            id: 'cz.eman.devfestws'
+    ]
+
+    //Versions
+    versions = [
+            // build
+            buildTools         : "28.0.2",
+            compileSdk         : 27,
+            minSdk             : 27,
+            targetSdkVersion   : 27,
+            androidthings      : '1.0+',
+
+            // source
+            sourceCompatibility: JavaVersion.VERSION_1_8,
+            targetCompatibility: JavaVersion.VERSION_1_8,
+            encoding           : "UTF-8",
+
+            // gradle
+            gradle             : '4.9',
+            gradleBuildTools   : '3.2.0-rc03',
+
+            kotlin             : '1.2.51',
+            supportLib         : '27.0.2',
+            anko               : '0.10.5',
+            junit              : '4.12',
+
+            // 3rd party
+            timber             : '4.7.1',
+            bmp280             : '1.0'
+    ]
+
+    androidDependencies = [
+            androidthings   : "com.google.android.things:androidthings:${versions.androidthings}",
+            room            : "android.arch.persistence.room:runtime:${versions.room}",
+            roomAnnotations : "android.arch.persistence.room:compiler:${versions.roomAnnotations}"
+    ]
+
+    gradlePlugins = [
+            android: "com.android.tools.build:gradle:${versions.gradleBuildTools}",
+            kotlin : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+    ]
+
+    // Support Libraries dependencies
+    supportDependencies = [
+            appCompat   : "com.android.support:appcompat-v7:${versions.supportLib}"
+    ]
+
+    kotlinDependencies = [
+            kotlinStbLib: "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}",
+            ankoSdk15   : "org.jetbrains.anko:anko-sdk15:${versions.anko}"
+    ]
+
+    testDependencies = [
+            junit       : "junit:junit:${versions.junit}"
+    ]
+
+    thirdPartyDependencies = [
+            timber       : "com.jakewharton.timber:timber:${versions.timber}",
+            bmp280       : "com.google.android.things.contrib:driver-bmx280:${versions.bmp280}"
+    ]
+}

@@ -1,0 +1,33 @@
+apply from: 'dependencies.gradle'
+
+buildscript {
+    // Load dependencies - Gradle cannot handle with external properties inside of buildscript
+    // So we need to apply external file here again
+    apply from: 'dependencies.gradle'
+
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath gradlePlugins.android
+
+        // Kotlin Grade plugin
+        classpath gradlePlugins.kotlin
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = versions.gradle
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

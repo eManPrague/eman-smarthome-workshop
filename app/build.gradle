@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        applicationId application.id
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionName "0.1"
+        versionCode 1
+    }
+
+    compileOptions {
+        sourceCompatibility versions.sourceCompatibility
+        targetCompatibility versions.targetCompatibility
+        encoding versions.encoding
+    }
+
+    sourceSets {
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+
+        main {
+            jniLibs.srcDirs = ['libs']
+            jni.srcDirs = []
+        }
+
+        // build types
+        debug.java.srcDirs += 'src/debug/kotlin'
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("$rootDir/debug.keystore")
+            storePassword "devfest"
+            keyAlias "devfestws"
+            keyPassword "devfest"
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${rootProject.name}.apk"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Android dependencies
+    compileOnly androidDependencies.androidthings
+
+    // Support Libraries
+    implementation supportDependencies.appCompat
+
+    // Kotlin
+    implementation kotlinDependencies.kotlinStbLib
+    implementation kotlinDependencies.ankoSdk15
+
+    // Tests
+    testImplementation testDependencies.junit
+
+    // 3rd party dependencies
+    implementation thirdPartyDependencies.timber
+    implementation thirdPartyDependencies.bmp280
+}
