@@ -1,5 +1,5 @@
-Android Things DevFest workshop by eMan
-=======================================
+Android Things workshop by eMan
+===============================
 
 Workshop Agenda
 ---------------
