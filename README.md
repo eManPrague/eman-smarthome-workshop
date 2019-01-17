@@ -23,4 +23,4 @@ Companion Mobile App
 --------------------
 
 * [iOS app](https://rink.hockeyapp.net/apps/937c7f9b738d40618d14b3a7f82422f9/app_versions/2)
-* [Android app](https://rink.hockeyapp.net/apps/2fbbc9c70a9b4ca29c65ed3e4d8deb04/app_versions/2)
+* [Android app](https://rink.hockeyapp.net/apps/2fbbc9c70a9b4ca29c65ed3e4d8deb04/app_versions/3)
